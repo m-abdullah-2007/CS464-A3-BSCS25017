@@ -546,12 +546,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   targetScore: 8
   lives: 3
+  timeLimit: 0
   respawnDelay: 0.6
   spawnProtection: 1.5
   player: {fileID: 1135152375}
   respawnPoint: {fileID: 829942660}
   scoreText: {fileID: 1524437879}
   livesText: {fileID: 1640093760}
+  timerText: {fileID: 0}
   winPanel: {fileID: 596034647}
   losePanel: {fileID: 1853711528}
 --- !u!4 &187009361
@@ -702,7 +704,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &251086332
 CapsuleCollider:
   m_ObjectHideFlags: 0
