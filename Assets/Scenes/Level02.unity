@@ -457,8 +457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   targetScore: 0
   lives: 3
-  timeLimit: 40
-  respawnDelay: 0.6
+  timeLimit: 30
+  respawnDelay: 1
   spawnProtection: 1.5
   player: {fileID: 1135152375}
   respawnPoint: {fileID: 829942660}
