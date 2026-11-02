@@ -1178,9 +1178,9 @@ MonoBehaviour:
   patrolSpeed: 2.5
   chaseSpeed: 3
   turnSpeed: 360
-  sightRange: 7
-  loseRange: 9
-  waitTime: 0
+  sightRange: 5
+  loseRange: 7
+  waitTime: 1
   needLineOfSight: 1
 --- !u!1 &252849425
 GameObject:
@@ -4592,9 +4592,9 @@ MonoBehaviour:
   patrolSpeed: 2.2
   chaseSpeed: 3
   turnSpeed: 360
-  sightRange: 7
-  loseRange: 9
-  waitTime: 1
+  sightRange: 5
+  loseRange: 7
+  waitTime: 2
   needLineOfSight: 1
 --- !u!114 &1333024746
 MonoBehaviour:
