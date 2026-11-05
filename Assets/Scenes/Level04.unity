@@ -317,6 +317,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
       value: 4
       objectReference: {fileID: 0}
@@ -1054,6 +1058,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
       value: 2
       objectReference: {fileID: 0}
@@ -1383,6 +1391,10 @@ PrefabInstance:
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: damage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -2189,6 +2201,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
       value: 1
       objectReference: {fileID: 0}
@@ -2896,6 +2912,10 @@ PrefabInstance:
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: damage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -3897,6 +3917,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
       value: 1
       objectReference: {fileID: 0}
@@ -4034,6 +4058,10 @@ PrefabInstance:
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: damage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -4753,6 +4781,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
       value: 2
       objectReference: {fileID: 0}
@@ -5403,6 +5435,10 @@ PrefabInstance:
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: damage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: restTime
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9105914538754434790, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: m_Size.y
