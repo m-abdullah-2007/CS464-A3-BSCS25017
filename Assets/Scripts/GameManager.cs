@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] int targetScore = 8, lives = 3;
-    [SerializeField] float timeLimit = 0f;          // 0 = no timer
+    [SerializeField] bool scoreWins = true;          // false = coins are bonus only
+    [SerializeField] float timeLimit = 0f;           // 0 = no timer
+    [SerializeField] bool surviveToWin = false;      // true = timer reaching 0 is a win
+    [SerializeField] string timerLabel = "Time";
     [SerializeField] float respawnDelay = 0.6f, spawnProtection = 1.5f;
     [SerializeField] Health player;
     [SerializeField] Transform respawnPoint;
@@ -32,7 +35,12 @@ public class GameManager : MonoBehaviour
     {
         if (ended || timeLimit <= 0f) return;
         timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0f) { timeLeft = 0f; UpdateUI(); Lose(); return; }
+        if (timeLeft <= 0f)
+        {
+            timeLeft = 0f; UpdateUI();
+            if (surviveToWin) Win(); else Lose();
+            return;
+        }
         UpdateUI();
     }
 
@@ -40,23 +48,23 @@ public class GameManager : MonoBehaviour
     {
         if (ended) return;
         score += amount; UpdateUI();
-        if (targetScore > 0 && score >= targetScore) Win();
+        if (scoreWins && targetScore > 0 && score >= targetScore) Win();
     }
 
     // Kept so the Collect-a-thon Coin.cs compiles unchanged.
     public void CollectRedCoin(Vector3 playerPosition) { AddScore(1); }
     public void AddBonus() { bonus++; }
 
-    // Called by GoalZone when the player touches the goal pad.
     public void ReachGoal() { Win(); }
 
     public void UpdateUI()
     {
         if (scoreText != null && targetScore > 0)
-            scoreText.text = $"Score: {score} / {targetScore}";
+            scoreText.text = scoreWins ? $"Score: {score} / {targetScore}"
+                                       : $"Bonus coins: {score} / {targetScore}";
         livesText.text = $"Lives: {lives}   Health: {Mathf.Max(player.Current, 0)} / {player.Max}";
         if (timerText != null && timeLimit > 0f)
-            timerText.text = $"Time: {Mathf.CeilToInt(timeLeft)}";
+            timerText.text = $"{timerLabel}: {Mathf.CeilToInt(timeLeft)}";
     }
 
     public void PlayerDied()

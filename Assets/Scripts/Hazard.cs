@@ -6,12 +6,15 @@ public class Hazard : MonoBehaviour
     [SerializeField] int damage = 1;
     [SerializeField] float knockback = 6f;
     [SerializeField] float restTime = 0f, warnTime = 0.7f, strikeTime = 0.4f;
+    [SerializeField] float startDelay = 0f;
     [SerializeField] GameObject warning;
 
     IEnumerator Start()
     {
         if (restTime <= 0f) yield break;
         Collider zone = GetComponent<Collider>();
+        zone.enabled = false;
+        if (startDelay > 0f) yield return new WaitForSeconds(startDelay);
         while (true)
         {
             zone.enabled = false;
