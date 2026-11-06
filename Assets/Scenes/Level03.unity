@@ -938,7 +938,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   targetScore: 10
   lives: 3
+  scoreWins: 1
+  goalNeedsScore: 0
+  goalPad: {fileID: 0}
   timeLimit: 0
+  surviveToWin: 0
+  timerLabel: Time
   respawnDelay: 0.6
   spawnProtection: 1.5
   player: {fileID: 1135152375}
@@ -1048,6 +1053,7 @@ MonoBehaviour:
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
+  startDelay: 0
   warning: {fileID: 0}
 --- !u!54 &251086331
 Rigidbody:
@@ -1177,11 +1183,15 @@ MonoBehaviour:
   player: {fileID: 1135152381}
   patrolSpeed: 2.5
   chaseSpeed: 3
+  retreatSpeed: 4
   turnSpeed: 360
   sightRange: 6
   loseRange: 8
   waitTime: 1
   needLineOfSight: 1
+  damage: 1
+  knockback: 6
+  hitPause: 2
 --- !u!1 &252849425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,6 +4338,81 @@ Transform:
   - {fileID: 588149174}
   m_Father: {fileID: 783539422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1199919506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1199919510}
+  - component: {fileID: 1199919509}
+  - component: {fileID: 1199919508}
+  - component: {fileID: 1199919507}
+  m_Layer: 0
+  m_Name: KillZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1199919507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199919506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7ea17e5336cfad4b9da9c81192927ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KillZone
+--- !u!65 &1199919508
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199919506}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1199919509
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199919506}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1199919510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199919506}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalScale: {x: 60, y: 1, z: 60}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243301745
 GameObject:
   m_ObjectHideFlags: 0
@@ -4591,11 +4676,15 @@ MonoBehaviour:
   player: {fileID: 1135152381}
   patrolSpeed: 2.2
   chaseSpeed: 3
+  retreatSpeed: 4
   turnSpeed: 360
   sightRange: 6
   loseRange: 8
   waitTime: 2
   needLineOfSight: 1
+  damage: 1
+  knockback: 6
+  hitPause: 2
 --- !u!114 &1333024746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4613,6 +4702,7 @@ MonoBehaviour:
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
+  startDelay: 0
   warning: {fileID: 0}
 --- !u!54 &1333024747
 Rigidbody:
@@ -6699,3 +6789,4 @@ SceneRoots:
   - {fileID: 1587861651}
   - {fileID: 1333094509}
   - {fileID: 344053221}
+  - {fileID: 1199919510}

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     string lastScoreLine, lastLivesLine, lastTimerLine;
     float timeLeft;
     bool ended;
+    bool respawning;
 
     void Awake() { Instance = this; Time.timeScale = 1f; timeLeft = timeLimit; }
 
