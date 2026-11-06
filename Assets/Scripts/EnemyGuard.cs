@@ -32,13 +32,17 @@ public class EnemyGuard : MonoBehaviour
 
         // Give-up range must be longer than chase range, or it flickers at the edge.
         if (loseRange <= sightRange) loseRange = sightRange + 2f;
+    }
 
+    void Start()
+    {
         if (player == null)
         {
             PlayerController pc = FindAnyObjectByType<PlayerController>();
             if (pc != null) player = pc.transform;
         }
     }
+
 
     void Update()
     {
