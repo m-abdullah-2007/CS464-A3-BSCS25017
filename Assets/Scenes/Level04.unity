@@ -326,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -1077,7 +1077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -1420,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -2083,6 +2083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 0
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -2236,7 +2237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -2957,7 +2958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -3890,6 +3891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 0
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -4043,7 +4045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -4194,7 +4196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -4770,6 +4772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 0
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -4923,7 +4926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -5322,6 +5325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 0
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -5587,7 +5591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: knockback
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9105914538754434790, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: m_Size.y
