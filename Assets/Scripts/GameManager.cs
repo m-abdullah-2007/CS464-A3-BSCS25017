@@ -106,17 +106,26 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDied()
     {
-        if (ended) return;
-        lives--; UpdateUI();
-        if (lives <= 0) Lose(); else StartCoroutine(Respawn());
+        if (ended || respawning) return;
+        lives--;
+        UpdateUI();
+        if (lives <= 0)
+        {
+            Lose();
+            return;
+        }
+        respawning = true;
+        StartCoroutine(Respawn());
     }
 
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(respawnDelay);
         Rigidbody body = player.GetComponent<Rigidbody>();
-        body.position = respawnPoint.position; body.linearVelocity = Vector3.zero;
+        body.position = respawnPoint.position;
+        body.linearVelocity = Vector3.zero;
         player.Restore(spawnProtection);
+        respawning = false;
     }
 
     void Win()
