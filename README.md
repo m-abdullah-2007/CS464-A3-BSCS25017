@@ -1,6 +1,6 @@
 # CS464 Assignment 03 · Muhammad Abdullah · BSCS25017
 
-- **Video (60–120 s):** [PASTE LINK]
+- **Video (60–120 s):** https://drive.google.com/file/d/1R5p2wKqBxDwoiMldRccwpjL2CZT3rpNh/view?usp=drive_link
 - **Started from:** A new project because there were major differences in both so to reduce the complexity starting from a new project was more suited.
 - **Controls:** WASD or arrow keys; Restart / Next Level buttons on the panels
 - **To win a level:** L1 collect 8 coins · L2 collect 5 coins then reach the goal · L3 collect 10 coins · L4 survive 40 s · L5 collect 12 coins, then reach the exit
