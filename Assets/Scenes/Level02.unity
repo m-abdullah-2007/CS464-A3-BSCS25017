@@ -455,11 +455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18312749c9e79348ade0a174509377d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  targetScore: 0
+  targetScore: 5
   lives: 3
   scoreWins: 1
-  goalNeedsScore: 0
-  goalPad: {fileID: 0}
+  goalNeedsScore: 1
+  goalPad: {fileID: 953909738}
   timeLimit: 30
   surviveToWin: 0
   timerLabel: Time
@@ -810,6 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -1465,6 +1466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -3873,6 +3875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -4279,6 +4282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -5156,6 +5160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -5210,6 +5215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -5343,6 +5349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 2
   knockback: 6
+  knockTime: 0.25
   restTime: 2.4
   warnTime: 0.7
   strikeTime: 0.4
@@ -5588,6 +5595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 2
   knockback: 6
+  knockTime: 0.25
   restTime: 1.8
   warnTime: 0.7
   strikeTime: 0.4
@@ -5854,6 +5862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 2
   knockback: 6
+  knockTime: 0.25
   restTime: 2
   warnTime: 0.6
   strikeTime: 0.4
