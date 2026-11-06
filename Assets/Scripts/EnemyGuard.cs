@@ -7,13 +7,17 @@ public class EnemyGuard : MonoBehaviour
     [SerializeField] Transform[] points;
     [SerializeField] PatrolMode mode = PatrolMode.Loop;
     [SerializeField] Transform player;
-    [SerializeField] float patrolSpeed = 2.5f, chaseSpeed = 4.5f, turnSpeed = 360f;
+    [SerializeField] float patrolSpeed = 2.5f, chaseSpeed = 4.5f, retreatSpeed = 4f, turnSpeed = 360f;
     [SerializeField] float sightRange = 7f, loseRange = 9f, waitTime = 0f;
     [SerializeField] bool needLineOfSight = true;
+    [SerializeField] int damage = 1;
+    [SerializeField] float knockback = 6f;
+    [SerializeField] float hitPause = 2f;     // seconds it stands still after retreating
 
     State state = State.Patrol;
     int index, step = 1;
-    float waitUntil;
+    float waitUntil, ignorePlayerUntil;
+    bool retreating;
     Renderer rend;
     Color calmColor;
 
@@ -21,6 +25,12 @@ public class EnemyGuard : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         if (rend != null) calmColor = rend.material.color;
+
+        // NEW: this script now does the damage itself, so switch off the old Hazard
+        // component on the same guard. No need to remove it in the Inspector.
+        Hazard oldHazard = GetComponent<Hazard>();
+        if (oldHazard != null) { oldHazard.enabled = false; Destroy(oldHazard); }
+
         if (player == null)
         {
             GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -36,7 +46,7 @@ public class EnemyGuard : MonoBehaviour
         {
             case State.Patrol:
                 Patrol();
-                if (CanSee(sightRange)) state = State.Chase;
+                if (Time.time >= ignorePlayerUntil && CanSee(sightRange)) state = State.Chase;
                 break;
 
             case State.Chase:
@@ -45,12 +55,48 @@ public class EnemyGuard : MonoBehaviour
                 break;
 
             case State.Return:
-                if (CanSee(sightRange)) { state = State.Chase; break; }
-                if (MoveTo(points[index].position, patrolSpeed)) state = State.Patrol;
+                if (!retreating && CanSee(sightRange)) { state = State.Chase; break; }
+                if (MoveTo(points[index].position, retreating ? retreatSpeed : patrolSpeed))
+                {
+                    if (retreating)
+                    {
+                        retreating = false;
+                        waitUntil = Time.time + hitPause;      // stand still
+                        ignorePlayerUntil = waitUntil;         // and ignore the player
+                    }
+                    state = State.Patrol;
+                }
                 break;
         }
 
-        if (rend != null) rend.material.color = state == State.Chase ? Color.red : calmColor;
+        bool resting = retreating || Time.time < ignorePlayerUntil;
+        if (rend != null)
+            rend.material.color = state == State.Chase ? Color.red : resting ? Color.gray : calmColor;
+    }
+
+    // One touch = one hit, then the guard retreats.
+    void OnTriggerStay(Collider other)
+    {
+        if (retreating || Time.time < ignorePlayerUntil) return;
+        if (!other.TryGetComponent(out Health health)) return;
+
+        if (health.TakeDamage(damage))
+        {
+            Rigidbody body = other.attachedRigidbody;
+            if (body != null)
+            {
+                Vector3 away = body.position - transform.position; away.y = 0f;
+                body.AddForce(away.normalized * knockback, ForceMode.Impulse);
+            }
+        }
+        StartRetreat();
+    }
+
+    void StartRetreat()
+    {
+        retreating = true;
+        index = NearestPoint();
+        state = State.Return;
     }
 
     void Patrol()
@@ -63,7 +109,6 @@ public class EnemyGuard : MonoBehaviour
         }
     }
 
-    // Moves one step towards target, turns to face it, returns true once it has arrived.
     bool MoveTo(Vector3 target, float speed)
     {
         Vector3 toTarget = target - transform.position;
@@ -79,7 +124,6 @@ public class EnemyGuard : MonoBehaviour
         Vector3 toPlayer = player.position - transform.position;
         if (toPlayer.magnitude > range) return false;
         if (!needLineOfSight) return true;
-        // Walls block the view. Triggers (spikes, coins, other guards) are ignored.
         if (Physics.Raycast(transform.position, toPlayer.normalized, out RaycastHit hit,
                             range, ~0, QueryTriggerInteraction.Ignore))
             return hit.collider.CompareTag("Player");

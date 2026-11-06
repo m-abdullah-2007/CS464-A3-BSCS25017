@@ -2232,11 +2232,15 @@ MonoBehaviour:
   player: {fileID: 1135152381}
   patrolSpeed: 4
   chaseSpeed: 6
+  retreatSpeed: 4
   turnSpeed: 360
-  sightRange: 5.5
+  sightRange: 4
   loseRange: 4
   waitTime: 2
   needLineOfSight: 1
+  damage: 1
+  knockback: 6
+  hitPause: 2
 --- !u!114 &652289975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5747,11 +5751,15 @@ MonoBehaviour:
   player: {fileID: 1135152381}
   patrolSpeed: 3
   chaseSpeed: 5.5
+  retreatSpeed: 4
   turnSpeed: 360
-  sightRange: 5.5
+  sightRange: 4
   loseRange: 4
   waitTime: 1
   needLineOfSight: 1
+  damage: 1
+  knockback: 6
+  hitPause: 2
 --- !u!114 &1710377902
 MonoBehaviour:
   m_ObjectHideFlags: 0
