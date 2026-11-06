@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winPanel, losePanel;
 
     int score, bonus;
+    string lastScoreLine, lastLivesLine, lastTimerLine;
     float timeLeft;
     bool ended;
 
@@ -75,18 +76,32 @@ public class GameManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (scoreText != null && targetScore > 0)
+        if (targetScore > 0) SetIfChanged(scoreText, ref lastScoreLine, ScoreLine());
+        if (player != null)
+            SetIfChanged(livesText, ref lastLivesLine,
+                $"Lives: {lives}   Health: {Mathf.Max(player.Current, 0)} / {player.Max}");
+        if (timeLimit > 0f)
+            SetIfChanged(timerText, ref lastTimerLine,
+                $"{timerLabel}: {Mathf.CeilToInt(timeLeft)}");
+    }
+
+    string ScoreLine()
+    {
+        if (goalNeedsScore)
         {
-            if (goalNeedsScore)
-                scoreText.text = $"Coins: {score} / {targetScore}   " +
-                                 (score >= targetScore ? "EXIT OPEN" : "exit locked");
-            else
-                scoreText.text = scoreWins ? $"Score: {score} / {targetScore}"
-                                           : $"Bonus coins: {score} / {targetScore}";
+            string state = "exit locked";
+            if (score >= targetScore) state = "EXIT OPEN";
+            return $"Coins: {score} / {targetScore}   {state}";
         }
-        livesText.text = $"Lives: {lives}   Health: {Mathf.Max(player.Current, 0)} / {player.Max}";
-        if (timerText != null && timeLimit > 0f)
-            timerText.text = $"{timerLabel}: {Mathf.CeilToInt(timeLeft)}";
+        if (scoreWins) return $"Score: {score} / {targetScore}";
+        return $"Bonus coins: {score} / {targetScore}";
+    }
+
+    void SetIfChanged(TMP_Text text, ref string last, string value)
+    {
+        if (text == null || value == last) return;
+        text.text = value;
+        last = value;
     }
 
     public void PlayerDied()
