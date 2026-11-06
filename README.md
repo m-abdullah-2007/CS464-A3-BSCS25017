@@ -1,59 +1,37 @@
-# ITU-CS-464-LAB-06-BSCS25017
+# CS464 Assignment 03 · Muhammad Abdullah · BSCS25017
 
-**Name:** Muhammad Abdullah   .   **Roll number:** BSCS25017   .   **Engine:** Unity 6
+- **Video (60–120 s):** [PASTE LINK]
+- **Started from:** A new project because there were major differences in both so to reduce the complexity starting from a new project was more suited.
+- **Controls:** WASD or arrow keys; Restart / Next Level buttons on the panels
+- **To win a level:** L1 collect 8 coins · L2 collect 5 coins then reach the goal · L3 collect 10 coins · L4 survive 40 s · L5 collect 12 coins, then reach the exit
 
-A 5-level arena game built Enemies, Obstacles & Power-ups. The player is a rolling ball. Every level has its own layout, objective and difficulty, and difficulty changes from Level 1 to Level 5.
+## Levels
+| Level | Screenshot | New idea | Combined with |
+|---|---|---|---|
+| Level01 | <img src="Docs/a3/level01.png" width="320"> | coins, score, a slow patrolling guard | spikes |
+| Level02 | <img src="Docs/a3/level02.png" width="320"> | crushers with a warning, bounce pad, timer | coins and spikes |
+| Level03 | <img src="Docs/a3/level03.png" width="320"> | guards that chase and give up | doors to hide behind |
+| Level04 | <img src="Docs/a3/level04.png" width="320"> | a wave of crushers, survive mode | shield and magnet |
+| Level05 | <img src="Docs/a3/level05.png" width="320"> | locked exit, 2 lives, chaser waves | fast guards, crushers |
 
-## Levels at a glance
-
-| # | Scene | Name | Objective | Main threats | Timer | Lives | Power-ups |
-|---|---|---|---|---|---|---|---|
-| 1 | `Level01` | Warm-Up Yard | Collect 8 coins | 1 slow patrolling guard, 3 spike strips | none | 3 | speed |
-| 2 | `Level02` | Spike Run | Reach the goal before time runs out | 3 crushers, 6 spike strips | 40 s | 3 | speed |
-| 3 | `Level03` | Guard House | Collect 10 coins without getting caught | 2 guards that patrol and chase | none | 3 | shield |
-| 4 | `Level04` | Crusher Grid | Survive until the timer ends (coins are bonus) | 9 crushers firing in a wave, spike ring | 40 s | 3 | shield, magnet (appear mid-run) |
-| 5 | `Level05` | The Gauntlet | Collect 12 coins to unlock the exit, then reach it | 2 fast guards, crusher bridge over spikes, chaser waves | 90 s | 2 | shield, speed |
-
-## How each level differs
-
-1. **Warm-Up Yard** is an open 20x20 arena. It is like a tutorial: roll, collect coins, avoid one slow guard and a few spikes.
-2. **Spike Run** swaps coins for a race. An S-shaped corridor leads to a goal pad, with spike strips and crushers across the lane. A speed boost halfway helps with the clock.
-3. **Guard House** is a cross-shaped map: a central hub with four side rooms, one coin pair in each. Guards chase you when they see you, and door walls block their view so you can hide. A touch costs one heart, then the guard retreats to its waypoint and pauses.
-4. **Crusher Grid** changes the goal to survival. A 3x3 grid of crushers covers the floor and fires on a diagonal wave, with spikes around the edge. There is no safe spot, so you hop from pad to pad. The shield and magnet appear during the run, and coins are optional bonuses.
-5. **The Gauntlet** combines everything in three rooms. Room A has guards, Room B a crusher bridge over spikes, and Room C waves of chasers. The exit pad stays red until all 12 coins are collected, and you only have 2 lives. It is like the crux of the whole build.
-
-## Difficulty progression
-
-- **Guards:** 1 slow guard, none, 2 chasing guards, none, 2 faster chasing guards.
-- **Crushers:** none, 3, none, 9, 3.
-- **Timer:** none, 40 s, none, 40 s, 90 s.
-- **Lives:** 3, 3, 3, 3, 2.
-- **Objective type:** collect, race, evade, survive, then collect-and-escape.
-
-## Scripts (`Assets/Scripts`)
-
-| Script | Purpose | Added in |
+## The numbers
+| Number | Value | Why this value |
 |---|---|---|
-| `PlayerController`, `Health`, `GameManager`, `Coin` | Movement, hearts and i-frames, score, lives, win/lose, coins | Level 1 |
-| `EnemyPatrol`, `Hazard`, `PowerUp` | Waypoint patrol, damaging triggers (spikes, crushers), speed and shield pickups | Level 1 |
-| `GoalZone`, timer in `GameManager` | Goal pad and countdown | Level 2 |
-| `EnemyGuard` | Patrol, chase and return state machine with line of sight and hit-then-retreat | Level 3 |
-| `Magnet`, `TimedPickups`, survive mode in `GameManager` | Coin magnet, pickups that appear mid-run, win by surviving | Level 4 |
-| `Chaser`, `WaveSpawner`, `ActivateOnEnter`, locked exit in `GameManager` | Wave enemies, room-triggered spawner, exit that needs all coins | Level 5 |
+| Patrol speed | 2.5 m/s (L3), 3–4 m/s (L5) | well below my run speed, so I can always outrun a guard |
+| Chase range | 6 m, give-up 8 m (L3) | a guard sees down its own corridor but not through door walls; the longer give-up range stops flicker |
+| Knockback | 6, ForceMode.Impulse | one kick that throws me clear of the hazard; steering is off for 0.25 s |
+| I-frames | 1 s | long enough to get clear after a hit, short enough that a hazard still hurts |
+| Power-up duration | 5 s (speed x1.6) | long enough to cross a room, not long enough for the whole level |
 
-`Hazard` gained a `startDelay` for staggering crushers (Level 4), and `GameManager` grew a little with each level while keeping the earlier levels working.
+## Short answers
+**1. Why does a trigger need a Rigidbody on at least one of the two objects?**
+In Unity trigger events fire when at least one of the two colliders is attached to a Rigidbody.If both colliders are plain Unity will not send a trigger.Because my player has a Rigidbody Unity sends trigger events for every collider my player touches, such, as coins, spikes or a kill zone.
 
-## Controls
+**2. Which ForceMode do your knockback and your Part A force use, and why each?**
+My Knockback uses Impulse. Impulse is a kick that is scaled by mass and is applied only once when the hit lands. In Level02 bounce pad uses VelocityChange. VelocityChange is an instant kick that ignores mass so the bounce is the same height every time.
 
-- **Move:** WASD or arrow keys (legacy Input Manager).
-- **Restart / Next Level:** buttons on the win and lose panels.
+**3. What does your code do when a second power-up is picked up while one is running?**
+It refreshes: BoostSpeed stops the coroutine and starts a new one, with the full duration. The timer stays with the player. It continues even after the pickup is destroyed.
 
-## Project layout
-
-```
-Assets/
-  Scenes/     Level01 ... Level05
-  Scripts/
-  Prefabs/    Coin, Crusher, Chaser
-  Materials/
-```
+**4. Why can `==` fail as an arrival check, and when does it work?**
+Floating-point positions rarely hit a target exactly. The equality operator `==` can stay false forever. The equality check only works after `MoveTowards` because `MoveTowards` snaps the Floating-point positions to the target on the final step. I use a distance check that relies on `arriveDistance`. I set arriveDistance to be larger, than one step.
