@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int targetScore = 8, lives = 3;
     [SerializeField] bool scoreWins = true;          // false = coins are bonus only
+    [SerializeField] bool goalNeedsScore = false;    // true = exit locked until targetScore coins
+    [SerializeField] Renderer goalPad;               // optional: turns red/green with the lock
     [SerializeField] float timeLimit = 0f;           // 0 = no timer
     [SerializeField] bool surviveToWin = false;      // true = timer reaching 0 is a win
     [SerializeField] string timerLabel = "Time";
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         if (timerText != null) timerText.gameObject.SetActive(timeLimit > 0f);
         if (scoreText != null) scoreText.gameObject.SetActive(targetScore > 0);
+        SetGoalColor();
         UpdateUI();
     }
 
@@ -47,7 +50,9 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         if (ended) return;
-        score += amount; UpdateUI();
+        score += amount;
+        SetGoalColor();
+        UpdateUI();
         if (scoreWins && targetScore > 0 && score >= targetScore) Win();
     }
 
@@ -55,13 +60,30 @@ public class GameManager : MonoBehaviour
     public void CollectRedCoin(Vector3 playerPosition) { AddScore(1); }
     public void AddBonus() { bonus++; }
 
-    public void ReachGoal() { Win(); }
+    // Called by GoalZone. Ignored while the exit is still locked.
+    public void ReachGoal()
+    {
+        if (goalNeedsScore && score < targetScore) return;
+        Win();
+    }
+
+    void SetGoalColor()
+    {
+        if (goalPad == null || !goalNeedsScore) return;
+        goalPad.material.color = score >= targetScore ? Color.green : Color.red;
+    }
 
     public void UpdateUI()
     {
         if (scoreText != null && targetScore > 0)
-            scoreText.text = scoreWins ? $"Score: {score} / {targetScore}"
-                                       : $"Bonus coins: {score} / {targetScore}";
+        {
+            if (goalNeedsScore)
+                scoreText.text = $"Coins: {score} / {targetScore}   " +
+                                 (score >= targetScore ? "EXIT OPEN" : "exit locked");
+            else
+                scoreText.text = scoreWins ? $"Score: {score} / {targetScore}"
+                                           : $"Bonus coins: {score} / {targetScore}";
+        }
         livesText.text = $"Lives: {lives}   Health: {Mathf.Max(player.Current, 0)} / {player.Max}";
         if (timerText != null && timeLimit > 0f)
             timerText.text = $"{timerLabel}: {Mathf.CeilToInt(timeLeft)}";

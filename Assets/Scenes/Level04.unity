@@ -318,7 +318,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -1059,7 +1067,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -1394,7 +1410,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -2202,7 +2226,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -2915,7 +2947,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -3918,7 +3958,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -4061,7 +4109,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -4782,7 +4838,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: startDelay
@@ -5438,7 +5502,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: restTime
-      value: 1.8
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: warnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249629765581824719, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
+      propertyPath: knockback
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9105914538754434790, guid: e3cfe3056b7deb84fbcf382f0df63a4b, type: 3}
       propertyPath: m_Size.y
