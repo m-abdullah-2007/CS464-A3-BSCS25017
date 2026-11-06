@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject winPanel, losePanel;
 
     int score, bonus;
+    string lastScoreLine, lastLivesLine, lastTimerLine;
     float timeLeft;
     bool ended;
+    bool respawning;
 
     void Awake() { Instance = this; Time.timeScale = 1f; timeLeft = timeLimit; }
 
@@ -75,33 +77,56 @@ public class GameManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        if (scoreText != null && targetScore > 0)
+        if (targetScore > 0) SetIfChanged(scoreText, ref lastScoreLine, ScoreLine());
+        if (player != null)
+            SetIfChanged(livesText, ref lastLivesLine,
+                $"Lives: {lives}   Health: {Mathf.Max(player.Current, 0)} / {player.Max}");
+        if (timeLimit > 0f)
+            SetIfChanged(timerText, ref lastTimerLine,
+                $"{timerLabel}: {Mathf.CeilToInt(timeLeft)}");
+    }
+
+    string ScoreLine()
+    {
+        if (goalNeedsScore)
         {
-            if (goalNeedsScore)
-                scoreText.text = $"Coins: {score} / {targetScore}   " +
-                                 (score >= targetScore ? "EXIT OPEN" : "exit locked");
-            else
-                scoreText.text = scoreWins ? $"Score: {score} / {targetScore}"
-                                           : $"Bonus coins: {score} / {targetScore}";
+            string state = "exit locked";
+            if (score >= targetScore) state = "EXIT OPEN";
+            return $"Coins: {score} / {targetScore}   {state}";
         }
-        livesText.text = $"Lives: {lives}   Health: {Mathf.Max(player.Current, 0)} / {player.Max}";
-        if (timerText != null && timeLimit > 0f)
-            timerText.text = $"{timerLabel}: {Mathf.CeilToInt(timeLeft)}";
+        if (scoreWins) return $"Score: {score} / {targetScore}";
+        return $"Bonus coins: {score} / {targetScore}";
+    }
+
+    void SetIfChanged(TMP_Text text, ref string last, string value)
+    {
+        if (text == null || value == last) return;
+        text.text = value;
+        last = value;
     }
 
     public void PlayerDied()
     {
-        if (ended) return;
-        lives--; UpdateUI();
-        if (lives <= 0) Lose(); else StartCoroutine(Respawn());
+        if (ended || respawning) return;
+        lives--;
+        UpdateUI();
+        if (lives <= 0)
+        {
+            Lose();
+            return;
+        }
+        respawning = true;
+        StartCoroutine(Respawn());
     }
 
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(respawnDelay);
         Rigidbody body = player.GetComponent<Rigidbody>();
-        body.position = respawnPoint.position; body.linearVelocity = Vector3.zero;
+        body.position = respawnPoint.position;
+        body.linearVelocity = Vector3.zero;
         player.Restore(spawnProtection);
+        respawning = false;
     }
 
     void Win()
@@ -109,6 +134,7 @@ public class GameManager : MonoBehaviour
         if (ended) return;
         ended = true;
         winPanel.SetActive(true);
+        if (IsLastLevel()) HideNextButton();
         Time.timeScale = 0f;
     }
 
@@ -126,10 +152,26 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    // Loads the next scene in Build Settings. Does nothing on the last level,
+    // so it never wraps back to Level01.
     public void NextLevel()
     {
+        if (IsLastLevel()) return;
         Time.timeScale = 1f;
-        int next = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(next < SceneManager.sceneCountInBuildSettings ? next : 0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    bool IsLastLevel()
+    {
+        return SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings;
+    }
+
+    // Finds the NextLevelButton by name, including inactive objects inside the
+    // win panel, and hides it. If the name doesn't match, nothing happens.
+    void HideNextButton()
+    {
+        Transform[] all = Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform t in all)
+            if (t.name == "NextLevelButton") t.gameObject.SetActive(false);
     }
 }
