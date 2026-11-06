@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
         if (ended) return;
         ended = true;
         winPanel.SetActive(true);
+        if (IsLastLevel()) HideNextButton();
         Time.timeScale = 0f;
     }
 
@@ -126,10 +127,26 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    // Loads the next scene in Build Settings. Does nothing on the last level,
+    // so it never wraps back to Level01.
     public void NextLevel()
     {
+        if (IsLastLevel()) return;
         Time.timeScale = 1f;
-        int next = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(next < SceneManager.sceneCountInBuildSettings ? next : 0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    bool IsLastLevel()
+    {
+        return SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings;
+    }
+
+    // Finds the NextLevelButton by name, including inactive objects inside the
+    // win panel, and hides it. If the name doesn't match, nothing happens.
+    void HideNextButton()
+    {
+        Transform[] all = Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform t in all)
+            if (t.name == "NextLevelButton") t.gameObject.SetActive(false);
     }
 }
