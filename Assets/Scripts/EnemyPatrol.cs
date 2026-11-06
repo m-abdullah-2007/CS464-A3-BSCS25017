@@ -7,17 +7,24 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] Transform[] points;
     [SerializeField] PatrolMode mode = PatrolMode.Loop;
     [SerializeField] float speed = 2.6f, waitTime = 0f, turnSpeed = 360f;
-    int index, step = 1; float waitUntil;
+    [SerializeField] float arriveDistance = 0.1f;   // bigger than one step
+    int index, step = 1;
+    float waitUntil;
+
+    bool Arrived(Vector3 target) =>
+        Vector3.Distance(transform.position, target) < arriveDistance;
 
     void Update()
     {
         if (points == null || points.Length == 0) return;
         if (Time.time < waitUntil) return;
-        Vector3 target = points[index].position, toTarget = target - transform.position;
+        Vector3 target = points[index].position;
+        Vector3 toTarget = target - transform.position;
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if (toTarget != Vector3.zero) transform.rotation = Quaternion.RotateTowards(
-            transform.rotation, Quaternion.LookRotation(toTarget), turnSpeed * Time.deltaTime);
-        if (transform.position == target) { index = NextIndex(); waitUntil = Time.time + waitTime; }
+        if (toTarget != Vector3.zero)
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation, Quaternion.LookRotation(toTarget), turnSpeed * Time.deltaTime);
+        if (Arrived(target)) { index = NextIndex(); waitUntil = Time.time + waitTime; }
     }
 
     int NextIndex()

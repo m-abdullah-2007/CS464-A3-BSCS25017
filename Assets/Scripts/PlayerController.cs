@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     Vector3 input;
     float speedMultiplier = 1f;
+    float noControlUntil;
     Coroutine boost;
 
     void Awake() => rb = GetComponent<Rigidbody>();
@@ -18,8 +19,22 @@ public class PlayerController : MonoBehaviour
         input = Vector3.ClampMagnitude(new Vector3(h, 0f, v), 1f);
     }
 
-    void FixedUpdate() => rb.AddForce(input * moveForce * speedMultiplier);
+    void FixedUpdate()
+    {
+        if (Time.time >= noControlUntil)
+            rb.AddForce(input * moveForce * speedMultiplier);
+    }
 
+    // A push that steering can't wipe: no control for `seconds`.
+    public void Knockback(Vector3 push, float seconds)
+    {
+        Vector3 v = rb.linearVelocity;
+        rb.linearVelocity = new Vector3(0f, v.y, 0f);
+        rb.AddForce(push, ForceMode.Impulse);
+        noControlUntil = Time.time + seconds;
+    }
+
+    // Refresh rule: a second pickup stops the running boost and starts a new one.
     public void BoostSpeed(float multiplier, float seconds)
     {
         if (boost != null) StopCoroutine(boost);
@@ -30,6 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         speedMultiplier = multiplier;
         yield return new WaitForSeconds(seconds);
-        speedMultiplier = 1f; boost = null;
+        speedMultiplier = 1f;
+        boost = null;
     }
 }

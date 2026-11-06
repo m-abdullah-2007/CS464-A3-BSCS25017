@@ -35,11 +35,7 @@ public class Chaser : MonoBehaviour
     {
         if (!other.TryGetComponent(out Health health) || !health.TakeDamage(damage)) return;
         Rigidbody body = other.attachedRigidbody;
-        if (body != null)
-        {
-            Vector3 away = body.position - transform.position; away.y = 0f;
-            body.AddForce(away.normalized * knockback, ForceMode.Impulse);
-        }
+        Hazard.Knock(other, transform.position, knockback, 0.25f);
         Destroy(gameObject);
     }
 }
