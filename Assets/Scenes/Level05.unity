@@ -2310,11 +2310,13 @@ MonoBehaviour:
   retreatSpeed: 4
   turnSpeed: 360
   sightRange: 4
-  loseRange: 4
+  loseRange: 6
   waitTime: 2
+  arriveDistance: 0.1
   needLineOfSight: 1
   damage: 1
   knockback: 6
+  knockTime: 0.25
   hitPause: 2
 --- !u!114 &652289975
 MonoBehaviour:
@@ -2330,6 +2332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -3449,6 +3452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -5210,6 +5214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
@@ -5829,11 +5834,13 @@ MonoBehaviour:
   retreatSpeed: 4
   turnSpeed: 360
   sightRange: 4
-  loseRange: 4
+  loseRange: 6
   waitTime: 1
+  arriveDistance: 0.1
   needLineOfSight: 1
   damage: 1
   knockback: 6
+  knockTime: 0.25
   hitPause: 2
 --- !u!114 &1710377902
 MonoBehaviour:
@@ -5849,6 +5856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
   knockback: 6
+  knockTime: 0.25
   restTime: 0
   warnTime: 0.7
   strikeTime: 0.4
