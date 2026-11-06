@@ -2082,7 +2082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
-  knockback: 0
+  knockback: 6
   knockTime: 0.25
   restTime: 0
   warnTime: 0.7
@@ -3890,7 +3890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
-  knockback: 0
+  knockback: 6
   knockTime: 0.25
   restTime: 0
   warnTime: 0.7
@@ -4771,7 +4771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
-  knockback: 0
+  knockback: 6
   knockTime: 0.25
   restTime: 0
   warnTime: 0.7
@@ -5324,7 +5324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
   damage: 1
-  knockback: 0
+  knockback: 6
   knockTime: 0.25
   restTime: 0
   warnTime: 0.7
