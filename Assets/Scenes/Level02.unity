@@ -605,7 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   targetScore: 5
   lives: 3
-  scoreWins: 1
+  scoreWins: 0
   goalNeedsScore: 1
   goalPad: {fileID: 953909738}
   timeLimit: 30
