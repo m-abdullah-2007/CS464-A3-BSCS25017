@@ -2234,7 +2234,7 @@ MonoBehaviour:
   chaseSpeed: 6
   turnSpeed: 360
   sightRange: 5.5
-  loseRange: 8
+  loseRange: 4
   waitTime: 2
   needLineOfSight: 1
 --- !u!114 &652289975
@@ -5749,7 +5749,7 @@ MonoBehaviour:
   chaseSpeed: 5.5
   turnSpeed: 360
   sightRange: 5.5
-  loseRange: 8
+  loseRange: 4
   waitTime: 1
   needLineOfSight: 1
 --- !u!114 &1710377902
